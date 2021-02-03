@@ -1,0 +1,37 @@
+<launch>
+  <!-- feature detector -->
+  <node name="corner_event_detector" pkg="corner_event_detector" type="detector" output="screen">
+    <param name="feature_type" value="harris"/>
+  </node>
+
+  <!-- visualization events-->
+  <node name="dvs_renderer_events" pkg="dvs_renderer" type="dvs_renderer">
+    <param name="display_method" value="red-blue"/>
+    <remap from="events" to="/dvs/events" />
+    <remap from="image" to="/dvs/image_raw" />
+    <remap from="camera_info" to="/dvs/camera_info" />
+    <remap from="dvs_rendering" to="dvs_rendering_events" />
+  </node>
+  
+  <node name="image_view_events" pkg="image_view" type="image_view">
+  	<remap from="image" to="dvs_rendering_events"/>
+  </node>
+  
+    
+  <!-- visualization corners-->
+  <node name="dvs_renderer_corners" pkg="dvs_renderer" type="dvs_renderer">
+    <param name="display_method" value="red-blue"/>
+    <remap from="events" to="/feature_events" />
+    <remap from="image" to="/dvs/image_raw" />
+    <remap from="camera_info" to="/dvs/camera_info" />
+    <remap from="dvs_rendering" to="dvs_rendering_corners" />
+  </node>
+
+  <node name="image_view_corners" pkg="image_view" type="image_view">
+  	<remap from="image" to="dvs_rendering_corners"/>
+  </node>
+
+
+</launch>
+
+
