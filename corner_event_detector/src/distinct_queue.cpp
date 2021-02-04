@@ -3,9 +3,11 @@
 namespace corner_event_detector
 {
 
-DistinctQueue::DistinctQueue(int window_size, int queue_size, bool use_polarity) :
+DistinctQueue::DistinctQueue(int sensor_width, int sensor_height, int window_size, int queue_size, bool use_polarity) :
   LocalEventQueues(window_size, queue_size)
 {
+  sensor_height_= sensor_height;
+  sensor_width_= sensor_width;
   // create queues
   const int polarities = use_polarity ? 2 : 1;
   const int num_queues = sensor_width_*sensor_height_ * polarities;

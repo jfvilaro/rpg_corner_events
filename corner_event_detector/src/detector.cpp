@@ -11,6 +11,7 @@ Detector::Detector(bool detect)
   {
     feature_pub_ = nh_.advertise<dvs_msgs::EventArray>("/feature_events", 1);
     event_sub_ = nh_.subscribe("/dvs/events", 0, &Detector::eventCallback, this);
+
   }
 }
 
@@ -26,6 +27,7 @@ Detector::~Detector()
   << " Reduction (%): " << (1.-total_corners_/(double)total_events_)*100
   << std::endl;
 }
+
 
 void Detector::eventCallback(const dvs_msgs::EventArray::ConstPtr &msg)
 {

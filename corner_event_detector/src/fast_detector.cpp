@@ -3,7 +3,7 @@
 namespace corner_event_detector
 {
 
-FastDetector::FastDetector(bool connect)
+FastDetector::FastDetector(int sensor_width, int sensor_height,bool connect)
 : Detector(connect),
   circle3_ {{0, 3}, {1, 3}, {2, 2}, {3, 1},
             {3, 0}, {3, -1}, {2, -2}, {1, -3},
@@ -17,9 +17,14 @@ FastDetector::FastDetector(bool connect)
 {
   detector_name_ = "FAST";
 
+  // constants
+  sensor_width_ = sensor_width;
+  sensor_height_ = sensor_height;
+
   // allocate SAE matrices
   sae_[0] = Eigen::MatrixXd::Zero(sensor_height_, sensor_width_);
   sae_[1] = Eigen::MatrixXd::Zero(sensor_height_, sensor_width_);
+  
 }
 
 FastDetector::~FastDetector()

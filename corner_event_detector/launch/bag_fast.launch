@@ -1,6 +1,8 @@
 <launch>
   <!-- feature detector -->
   <node name="corner_event_detector" pkg="corner_event_detector" type="detector" output="screen">
+    <param name="sensor_width" value="346"/>
+    <param name="sensor_height" value="260"/>
     <param name="feature_type" value="fast"/>
   </node>
 
@@ -33,5 +35,6 @@
 
 
 </launch>
+
 
 

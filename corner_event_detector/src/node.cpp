@@ -7,22 +7,27 @@
 int main(int argc, char* argv[])
 {
   ros::init(argc, argv, "corner_event_detector");
+  ros::NodeHandle nh("~");
 
   // load parameter
   std::string feature_type;
+  int sensor_width;
+  int sensor_height;
   ros::param::param<std::string>("~feature_type", feature_type, "harris");
+  nh.param<int>("sensor_width", sensor_width, 7); // Sensor dimensions params
+  nh.param<int>("sensor_height", sensor_height, 7);
 
   // create feature detecotr
   corner_event_detector::Detector* detector;
   if (feature_type == "harris")
   {
     ROS_INFO("Using Harris detector.");
-    detector = new corner_event_detector::HarrisDetector;
+    detector = new corner_event_detector::HarrisDetector(sensor_width, sensor_height);
   }
   else if (feature_type == "fast")
   {
     ROS_INFO("Using fast detector.");
-    detector = new corner_event_detector::FastDetector;
+    detector = new corner_event_detector::FastDetector(sensor_width, sensor_height);
   }
   else
   {

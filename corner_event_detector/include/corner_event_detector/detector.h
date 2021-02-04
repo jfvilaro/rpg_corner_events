@@ -2,6 +2,7 @@
 
 #include <ros/ros.h>
 #include <dvs_msgs/EventArray.h>
+#include "sensor_msgs/CameraInfo.h"
 
 #include "corner_event_detector/timer.h"
 
@@ -25,11 +26,14 @@ private:
   ros::NodeHandle nh_;
   ros::Publisher feature_pub_;
   ros::Subscriber event_sub_;
+  ros::Subscriber camera_info_sub_;
   void eventCallback(const dvs_msgs::EventArray::ConstPtr &msg);
+  void cameraInfoCallback(const sensor_msgs::CameraInfo::ConstPtr& msg);
 
   // statistics
   double total_time_;
   int total_events_, total_corners_;
+
 };
 
 
