@@ -16,7 +16,7 @@ namespace corner_event_detector
 class HarrisDetector : public Detector
 {
 public:
-  HarrisDetector(int sensor_width, int sensor_height, bool connect = true);
+  HarrisDetector(int sensor_width, int sensor_height, int harris_queue_size, int harris_window_size, int harris_kernel_size, double harris_threshold, bool connect = true);
   virtual ~HarrisDetector();
 
   bool isFeature(const dvs_msgs::Event &e);
@@ -33,13 +33,13 @@ private:
   LocalEventQueues* queues_;
 
   // parameters
-  int queue_size_;
-  int window_size_;
-  int kernel_size_;
+  int queue_size_= 25;
+  int window_size_= 4;
+  int kernel_size_= 5;
   int sensor_width_ = 240;
   int sensor_height_ = 180;
-  double harris_threshold_;
-
+  double harris_threshold_=8.0;
+  
   double last_score_;
 
   // kernels

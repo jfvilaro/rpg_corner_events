@@ -3,19 +3,20 @@
 namespace corner_event_detector
 {
 
-HarrisDetector::HarrisDetector(int sensor_width, int sensor_height, bool connect)
+HarrisDetector::HarrisDetector(int sensor_width, int sensor_height, int harris_queue_size, int harris_window_size, int harris_kernel_size, double harris_threshold, bool connect)
 : Detector(connect)
 {
   detector_name_ = "Harris";
 
+   // parameters
+
   sensor_height_= sensor_height;
   sensor_width_= sensor_width;
 
-  // parameters
-  queue_size_ = 25;
-  window_size_ = 4;
-  kernel_size_ = 5;
-  harris_threshold_ = 8.0;
+  queue_size_ = harris_queue_size;
+  window_size_ = harris_window_size;
+  kernel_size_ = harris_kernel_size;
+  harris_threshold_ = harris_threshold;
 
   queues_ = new DistinctQueue(sensor_width_, sensor_height_, window_size_, queue_size_, true);
 
