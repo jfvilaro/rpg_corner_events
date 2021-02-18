@@ -18,6 +18,7 @@ list(APPEND SOURCE_FILES
   src/detector.cpp
   src/harris_detector.cpp
   src/fast_detector.cpp
+  src/fast_detector_15.cpp
   src/distinct_queue.cpp
   src/fixed_distinct_queue.cpp
 )
@@ -26,6 +27,7 @@ list(APPEND HEADER_FILES
   include/corner_event_detector/detector.h
   include/corner_event_detector/harris_detector.h
   include/corner_event_detector/fast_detector.h
+  include/corner_event_detector/fast_detector_15.h
   include/corner_event_detector/local_event_queues.h
   include/corner_event_detector/distinct_queue.h
   include/corner_event_detector/fixed_distinct_queue.h

@@ -12,11 +12,11 @@
 namespace corner_event_detector
 {
 
-class FastDetector : public Detector
+class FastDetector15 : public Detector
 {
 public:
-  FastDetector(int sensor_width, int sensor_height, bool connect = true);
-  virtual ~FastDetector();
+  FastDetector15(int sensor_width, int sensor_height, bool connect = true);
+  virtual ~FastDetector15();
 
   bool isFeature(const dvs_msgs::Event &e);
 
@@ -25,8 +25,8 @@ private:
   Eigen::MatrixXd sae_[2];
 
   // pixels on circle
-  int circle3_[16][2];
-  int circle4_[20][2];
+  int circle6_[32][2];
+  int circle7_[40][2];
 
   // parameters
   int sensor_width_ = 240;

@@ -27,8 +27,8 @@ private:
   int getIndex(int x, int y, bool polarity) const;
 
   // constants
-  int sensor_width_ = 346;
-  int sensor_height_ = 260;
+  int sensor_width_ = 240;
+  int sensor_height_ = 180;
 };
 
 } // namespace

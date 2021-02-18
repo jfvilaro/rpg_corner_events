@@ -3,6 +3,7 @@
 #include "corner_event_detector/detector.h"
 #include "corner_event_detector/harris_detector.h"
 #include "corner_event_detector/fast_detector.h"
+#include "corner_event_detector/fast_detector_15.h"
 
 int main(int argc, char* argv[])
 {
@@ -36,6 +37,11 @@ int main(int argc, char* argv[])
   {
     ROS_INFO("Using fast detector.");
     detector = new corner_event_detector::FastDetector(sensor_width, sensor_height);
+  }
+  else if (feature_type == "fast_15")
+  {
+    ROS_INFO("Using fast detector 15 by 15 pixels.");
+    detector = new corner_event_detector::FastDetector15(sensor_width, sensor_height);
   }
   else
   {
